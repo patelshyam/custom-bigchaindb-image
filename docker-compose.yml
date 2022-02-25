@@ -65,7 +65,15 @@ services:
     depends_on:
       bigchaindb:
         condition: service_healthy
-
+  jupyter_notebook:
+      container_name: jupyter_note_book
+      build: 
+        context: .
+        dockerfile: jupyter.dockerfile
+      ports:
+        - "8888:8888"
+      volumes:
+        - $HOME/jupyter_note_book:/usr/src/data
 
   # curl client to check the health of development env
   curl-client:
